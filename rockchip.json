@@ -1,0 +1,112 @@
+{
+	"slug": "rockchip",
+	"aliases": [
+		"minix 5"
+	],
+	"name": "rockchip",
+	"arch": "armv7hf",
+	"state": "RELEASED",
+	"stateInstructions": {
+		"postProvisioning": [
+			"The device is performing a shutdown. Please wait until all LEDs are off.",
+			"Remove the resin.io installation media.",
+			"Remove and re-connect power to the board."
+		]
+	},
+	"instructions": [
+		"Download and install <a href=\"http://www.etcher.io/\">Etcher</a>.\nYou can also use another image writer of your choice.\n<br>\nStart the writer and select the Device OS <code>.img</code> file in your downloads folder.\n<br>\nInsert your SD card and press [Burn!].\n<br>\n<strong>Warning!</strong> This will erase your SD card, please make sure any important data is backed up.\n<br>\nWait until it's finished writing.\n<br>\n<strong>Info</strong>: you can repeat the above steps for as many devices as you want, using the same OS image file.",
+		"Safely eject the freshly burnt SD card and insert into the rockchip.",
+		"<strong>Warning!</strong> This will also completely erase internal storage media, so please make a backup first.",
+		"Power up the rockchip while holding down the small button near the SD slot. You need to keep it pressed until the blue LEDs start flashing wildly.",
+		"The device is performing a shutdown. Please wait until all LEDs are off.",
+		"Remove the resin.io installation media.",
+		"Remove and re-connect power to the board."
+	],
+	"gettingStartedLink": {
+		"windows": "http://docs.resin.io/#/pages/installing/gettingStarted-BBB.md#windows",
+		"osx": "http://docs.resin.io/#/pages/installing/gettingStarted-BBB.md#on-mac-and-linux",
+		"linux": "http://docs.resin.io/#/pages/installing/gettingStarted-BBB.md#on-mac-and-linux"
+	},
+	"supportsBlink": true,
+	"yocto": {
+		"machine": "marsboard-rk3066",
+		"image": "resin-image-flasher",
+		"fstype": "resin-sdcard",
+		"version": "yocto-jethro",
+		"deployArtifact": "resin-image-flasher-rockchip.resin-sdcard",
+		"compressed": true
+	},
+	"options": [
+		{
+			"isGroup": true,
+			"name": "network",
+			"message": "Network",
+			"options": [
+				{
+					"message": "Network Connection",
+					"name": "network",
+					"type": "list",
+					"choices": [
+						"ethernet",
+						"wifi"
+					]
+				},
+				{
+					"message": "Wifi SSID",
+					"name": "wifiSsid",
+					"type": "text",
+					"when": {
+						"network": "wifi"
+					}
+				},
+				{
+					"message": "Wifi Passphrase",
+					"name": "wifiKey",
+					"type": "password",
+					"when": {
+						"network": "wifi"
+					}
+				}
+			]
+		},
+		{
+			"isGroup": true,
+			"isCollapsible": true,
+			"collapsed": true,
+			"name": "advanced",
+			"message": "Advanced",
+			"options": [
+				{
+					"message": "Check for updates every X minutes",
+					"name": "appUpdatePollInterval",
+					"type": "number",
+					"min": 0,
+					"default": 1
+				}
+			]
+		}
+	],
+	"configuration": {
+		"config": {
+			"partition": {
+				"primary": 4,
+				"logical": 1
+			},
+			"path": "/config.json"
+		}
+	},
+	"initialization": {
+		"options": [
+			{
+				"message": "Select a drive",
+				"type": "drive",
+				"name": "drive"
+			}
+		],
+		"operations": [
+			{
+				"command": "burn"
+			}
+		]
+	}
+}

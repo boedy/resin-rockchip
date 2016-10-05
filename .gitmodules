@@ -1,0 +1,15 @@
+[submodule "resin-yocto-scripts"]
+	path = resin-yocto-scripts
+	url = https://github.com/resin-os/resin-yocto-scripts
+[submodule "resin-device-types"]
+	path = resin-device-types
+	url = https://github.com/resin-io-modules/resin-device-types
+[submodule "layers/meta-resin"]
+	path = layers/meta-resin
+	url = https://github.com/resin-os/meta-resin
+[submodule "layers/oe-meta-go"]
+	path = layers/oe-meta-go
+	url = https://github.com/mem/oe-meta-go
+[submodule "layers/meta-openembedded"]
+	path = layers/meta-openembedded
+	url = https://github.com/openembedded/meta-openembedded
