@@ -39,7 +39,7 @@ module.exports =
 		image: 'resin-image-flasher'
 		fstype: 'resin-sdcard'
 		version: 'yocto-jethro'
-		deployArtifact: 'resin-image-flasher-rockchip.resin-sdcard'
+		deployArtifact: 'resin-image-flasher-marsboard-rk3066.resin-sdcard'
 		compressed: true
 
 	options: [ networkOptions.group ]
